@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Order your taco creations!</h1>
+      <img th:src="@{/images/TacoCloud.png}" />
+      <a class="btn btn-secondary" th:href="@{/design}" id="another"
+        >Design another taco</a
+      >
+      <form
+        class="w-50"
+        method="POST"
+        th:action="@{/orders}"
+        th:object="${tacoOrder}"
+      >
+        <h3>Deliver my taco masterpieces to...</h3>
+        <div>
+          <label class="form-label" for="deliveryName">Name: </label>
+          <input class="form-control" type="text" th:field="*{deliveryName}" />
+        </div>
+
+        <label class="form-label" for="deliveryStreet">Street address: </label>
+        <input class="form-control" type="text" th:field="*{deliveryStreet}" />
+
+        <label class="form-label" for="deliveryCity">City: </label>
+        <input class="form-control" type="text" th:field="*{deliveryCity}" />
+
+        <label class="form-label" for="deliveryState">State: </label>
+        <input class="form-control" type="text" th:field="*{deliveryState}" />
+
+        <label class="form-label" for="deliveryZip">Zip code: </label>
+        <input class="form-control" type="text" th:field="*{deliveryZip}" />
+        <!-- ...  -->
+        <h3 class="mt-2">Here's how I'll pay...</h3>
+        <div>
+          <label class="form-label" for="ccNumber">Credit Card #: </label>
+          <input class="form-control" type="text" th:field="*{ccNumber}" />
+
+          <label class="form-label" for="ccExpiration">Expiration: </label>
+          <input class="form-control" type="text" th:field="*{ccExpiration}" />
+
+          <label class="form-label" for="ccCVV">CVV: </label>
+          <input class="form-control" type="text" th:field="*{ccCVV}" />
+        </div>
+        <input
+          class="btn btn-primary mt-2"
+          type="submit"
+          value="Submit Order"
+        />
+      </form>
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  </body>
+</html>

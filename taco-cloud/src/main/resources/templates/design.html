@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Design Your Taco</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Design your taco!</h1>
+      <img th:src="@{/images/TacoCloud.png}" />
+    </div>
+    <form method="POST" th:object="${taco}">
+      <div class="row">
+        <div class="col">
+          <h3>Designate your wrap:</h3>
+          <div class="form-check" th:each="w : ${wrap}">
+            <input class="form-check-input" type="checkbox" th:id="${w.id}" />
+            <label
+              class="form-check-label"
+              th:for="${w.id}"
+              th:text="${w.name}"
+            >
+            </label>
+          </div>
+        </div>
+        <div class="col">
+          <h3>Pick your protein:</h3>
+          <div class="form-check" th:each="w : ${protein}">
+            <input class="form-check-input" type="checkbox" th:id="${w.id}" />
+            <label
+              class="form-check-label"
+              th:for="${w.id}"
+              th:text="${w.name}"
+            >
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h3>Choose your cheese:</h3>
+          <div class="form-check" th:each="w : ${cheese}">
+            <input class="form-check-input" type="checkbox" th:id="${w.id}" />
+            <label
+              class="form-check-label"
+              th:for="${w.id}"
+              th:text="${w.name}"
+            >
+            </label>
+          </div>
+        </div>
+        <div class="col">
+          <h3>Determine your veggies:</h3>
+          <div class="form-check" th:each="w : ${veggies}">
+            <input class="form-check-input" type="checkbox" th:id="${w.id}" />
+            <label
+              class="form-check-label"
+              th:for="${w.id}"
+              th:text="${w.name}"
+            >
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h3>Select your sauce:</h3>
+          <div class="form-check" th:each="w : ${sauce}">
+            <input class="form-check-input" type="checkbox" th:id="${w.id}" />
+            <label
+              class="form-check-label"
+              th:for="${w.id}"
+              th:text="${w.name}"
+            >
+            </label>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
+      <label for="design-name" class="form-label mt-2">Name your taco </label>
+      <input type="text" class="form-control w-50" id="design-name" />
+      <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    </form>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  </body>
+</html>
