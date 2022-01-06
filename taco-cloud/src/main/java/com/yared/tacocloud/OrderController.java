@@ -22,12 +22,18 @@ public class OrderController {
         return "orderForm";
     }
 
+    @GetMapping("/current/thanks")
+    public String gratitude() {
+
+        return "gratitude";
+    }
+
     @PostMapping
     public String processOrder(@Valid TacoOrder order, Errors errors) {
         if (errors.hasErrors()) {
             return "orderForm";
         }
         log.info("Order submitted: " + order);
-        return "redirect:/";
+        return "redirect:/orders/current/thanks";
     }
 }
