@@ -3,8 +3,12 @@ package com.yared.tacocloud;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,10 +59,13 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processTaco(Taco taco) {
-        // Save the taco...
-        // We'll do this in chapter 3
-        log.info("Processing taco: " + taco);
+    public String processTaco(@Valid Taco taco, Errors errors) {
+
+        if (errors.hasErrors()) {
+            return "design";
+        }
+
         return "redirect:/orders/current";
     }
+
 }

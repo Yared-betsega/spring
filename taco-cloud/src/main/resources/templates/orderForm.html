@@ -20,32 +20,115 @@
         <h3>Deliver my taco masterpieces to...</h3>
         <div>
           <label class="form-label" for="deliveryName">Name: </label>
-          <input class="form-control" type="text" th:field="*{deliveryName}" />
+          <input
+            th:class="|form-control ${#fields.hasErrors('deliveryName')? 'is-invalid': 'is-valid'}|"
+            type="text"
+            th:field="*{deliveryName}"
+          />
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('deliveryName')}"
+            th:errors="*{deliveryName}"
+          ></div>
+        </div>
+        <div>
+          <label class="form-label" for="deliveryStreet"
+            >Street address:
+          </label>
+          <input
+            th:class="|form-control ${#fields.hasErrors('deliveryStreet')? 'is-invalid': 'is-valid'}|"
+            type="text"
+            th:field="*{deliveryStreet}"
+          />
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('deliveryStreet')}"
+            th:errors="*{deliveryStreet}"
+          ></div>
+        </div>
+        <div>
+          <label class="form-label" for="deliveryCity">City: </label>
+          <input
+            th:class="|form-control ${#fields.hasErrors('deliveryCity')? 'is-invalid': 'is-valid'}|"
+            type="text"
+            th:field="*{deliveryCity}"
+          />
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('deliveryCity')}"
+            th:errors="*{deliveryCity}"
+          ></div>
         </div>
 
-        <label class="form-label" for="deliveryStreet">Street address: </label>
-        <input class="form-control" type="text" th:field="*{deliveryStreet}" />
+        <div>
+          <label class="form-label" for="deliveryState">State: </label>
+          <input
+            th:class="|form-control ${#fields.hasErrors('deliveryState')? 'is-invalid': 'is-valid'}|"
+            type="text"
+            th:field="*{deliveryState}"
+          />
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('deliveryState')}"
+            th:errors="*{deliveryState}"
+          ></div>
+        </div>
 
-        <label class="form-label" for="deliveryCity">City: </label>
-        <input class="form-control" type="text" th:field="*{deliveryCity}" />
+        <div>
+          <label class="form-label" for="deliveryZip">Zip code: </label>
+          <input
+            th:class="|form-control ${#fields.hasErrors('deliveryZip')? 'is-invalid': 'is-valid'}|"
+            type="text"
+            th:field="*{deliveryZip}"
+          />
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('deliveryZip')}"
+            th:errors="*{deliveryZip}"
+          ></div>
+        </div>
 
-        <label class="form-label" for="deliveryState">State: </label>
-        <input class="form-control" type="text" th:field="*{deliveryState}" />
-
-        <label class="form-label" for="deliveryZip">Zip code: </label>
-        <input class="form-control" type="text" th:field="*{deliveryZip}" />
-        <!-- ...  -->
         <h3 class="mt-2">Here's how I'll pay...</h3>
         <div>
           <label class="form-label" for="ccNumber">Credit Card #: </label>
-          <input class="form-control" type="text" th:field="*{ccNumber}" />
-
-          <label class="form-label" for="ccExpiration">Expiration: </label>
-          <input class="form-control" type="text" th:field="*{ccExpiration}" />
-
-          <label class="form-label" for="ccCVV">CVV: </label>
-          <input class="form-control" type="text" th:field="*{ccCVV}" />
+          <input
+            th:class="|form-control ${#fields.hasErrors('ccNumber')? 'is-invalid': 'is-valid'}|"
+            type="text"
+            th:field="*{ccNumber}"
+          />
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('ccNumber')}"
+            th:errors="*{ccNumber}"
+          ></div>
         </div>
+        <div>
+          <label class="form-label" for="ccExpiration">Expiration: </label>
+          <input
+            th:class="|form-control ${#fields.hasErrors('ccExpiration')? 'is-invalid': 'is-valid'}|"
+            type="text"
+            th:field="*{ccExpiration}"
+          />
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('ccExpiration')}"
+            th:errors="*{ccExpiration}"
+          ></div>
+        </div>
+        <div>
+          <label class="form-label" for="ccCVV">CVV: </label>
+          <input
+            th:class="|form-control ${#fields.hasErrors('ccCVV')? 'is-invalid': 'is-valid'}|"
+            type="text"
+            th:field="*{ccCVV}"
+          />
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('ccCVV')}"
+            th:errors="*{ccCVV}"
+          ></div>
+        </div>
+
         <input
           class="btn btn-primary mt-2"
           type="submit"
