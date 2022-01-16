@@ -16,12 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import com.yared.tacocloud.Ingredient;
 import com.yared.tacocloud.Ingredient.Type;
-import com.yared.tacocloud.Taco;
 
-@Slf4j
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("tacoOrder")
@@ -63,10 +59,10 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processTaco(@Valid Taco taco, @ModelAttribute TacoOrder order, Errors errors) {
+    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder order) {
 
         if (errors.hasErrors()) {
-            return "design";
+            return "redirect:/design";
         }
         order.addTaco(taco);
         return "redirect:/orders/current";

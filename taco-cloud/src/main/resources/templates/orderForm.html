@@ -11,15 +11,12 @@
     <h1>Order your taco creations!</h1>
     <img th:src="@{/images/TacoCloud.png}" />
     <a class="btn btn-secondary" th:href="@{/design}" id="another">Design another taco</a>
-
-    
-    <ul class="list-group">
+    <form class="w-50" method="POST" th:action="@{/orders}" th:object="${tacoOrder}">
+      <ul class="list-group">
         <li class="list-group-item" th:each="taco : ${tacoOrder.tacos}">
-          <span th:text="${taco.name}">taco name</span>
+          <span th:text="${taco.designName}">taco name</span>
         </li>
       </ul>
-    <form class="w-50" method="POST" th:action="@{/orders}" th:object="${tacoOrder}">
-      
       <h3>Deliver my taco masterpieces to...</h3>
       <div>
         <label class="form-label" for="deliveryName">Name: </label>
@@ -41,21 +38,18 @@
           th:field="*{deliveryCity}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('deliveryCity')}" th:errors="*{deliveryCity}"></div>
       </div>
-
       <div>
         <label class="form-label" for="deliveryState">State: </label>
         <input th:class="|form-control ${#fields.hasErrors('deliveryState')? 'is-invalid': 'is-valid'}|" type="text"
           th:field="*{deliveryState}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('deliveryState')}" th:errors="*{deliveryState}"></div>
       </div>
-
       <div>
         <label class="form-label" for="deliveryZip">Zip code: </label>
         <input th:class="|form-control ${#fields.hasErrors('deliveryZip')? 'is-invalid': 'is-valid'}|" type="text"
           th:field="*{deliveryZip}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('deliveryZip')}" th:errors="*{deliveryZip}"></div>
       </div>
-
       <h3 class="mt-2">Here's how I'll pay...</h3>
       <div>
         <label class="form-label" for="ccNumber">Credit Card #: </label>
@@ -75,7 +69,6 @@
           th:field="*{ccCVV}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('ccCVV')}" th:errors="*{ccCVV}"></div>
       </div>
-
       <input class="btn btn-primary mt-2" type="submit" value="Submit Order" />
     </form>
   </div>
